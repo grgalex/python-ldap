@@ -46,6 +46,9 @@ for i in range(len(LDAP_CLASS.extra_files)):
   origfileslist = origfiles.split(',')
   LDAP_CLASS.extra_files[i]=(destdir, origfileslist)
 
+# XXX: Always compile in debug mode, no optimizations.
+LDAP_CLASS.extra_compile_args.extend(['-O0', '-g3', '-ggdb'])
+
 if os.environ.get('WITH_GCOV'):
   # Instrumentation for measuring code coverage
   LDAP_CLASS.extra_compile_args.extend(
